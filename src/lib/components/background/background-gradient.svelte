@@ -34,7 +34,7 @@
 		left: 0;
 		width: 100%;
 		height: 100px;
-		background: url('assets/wave.png');
+		background: url('/assets/wave.png');
 		background-size: 1000px 100px;
 	}
 	section .air.air1 {
