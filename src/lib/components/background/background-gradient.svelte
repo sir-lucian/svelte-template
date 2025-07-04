@@ -1,192 +1,84 @@
-<script lang="ts">
-	// This component creates a starry background with falling stars.
-	// It uses CSS animations to create the effect of stars falling from the sky.
-</script>
-
-<link rel="stylesheet" href="./css/background/index.css">
-
-<div class="fixed top-0 start-0 h-full w-full whole">
-<section class="body">
-	<div class="stars">
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-		<div class="star"></div>
-	</div>
+<section class="whole fixed start-0 top-0">
+	<section class="body">
+		<div class="air air1"></div>
+		<div class="air air2"></div>
+		<div class="air air3"></div>
+		<div class="air air4"></div>
+	</section>
 </section>
-</div>
 
-<style lang="scss">
-
-	@use 'sass:math';
-	@mixin sp-layout {
-		@media screen and (max-width: 750px) {
-			@content;
-		}
+<style scoped>
+	* {
+		margin: 0;
+		padding: 0;
 	}
-
-	div.whole {
-		z-index: -2;
-	}
-
-	section.body {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		min-height: 100vh;
-		background: radial-gradient(ellipse at bottom, #f0f0f0 0%, #c0c0c0 100%);
-		overflow: hidden;
-	}
-
-	@function random_range($min, $max) {
-		$rand: math.random();
-		$random_range: $min + math.floor($rand * (($max - $min) + 1));
-		@return $random_range;
-	}
-
-	.stars {
+	section.whole {
 		position: fixed;
 		top: 0;
 		left: 0;
-		width: 100%;
-		height: 120%;
-		transform: rotate(-45deg);
+		min-width: 100vw;
+		min-height: 100vh;
+		z-index: -1;
 	}
-
-	.star {
-		$star-count: 50;
-		--star-color: white;
-		--star-tail-length: 6em;
-		--star-tail-height: 2px;
-		--star-width: calc(var(--star-tail-length) / 6);
-		--fall-duration: 9s;
-		--tail-fade-duration: var(--fall-duration);
-
+	section.body {
+		position: relative;
+		min-width: 100vw;
+		min-height: 100vh;
+		background: #dadada;
+		overflow: hidden;
+		z-index: -2;
+	}
+	section .air {
 		position: absolute;
-		top: var(--top-offset);
+		bottom: 0;
 		left: 0;
-		width: var(--star-tail-length);
-		height: var(--star-tail-height);
-		color: var(--star-color);
-		background: linear-gradient(45deg, currentColor, transparent);
-		border-radius: 50%;
-		filter: drop-shadow(0 0 6px currentColor);
-		transform: translate3d(104em, 0, 0);
-		animation:
-			fall var(--fall-duration) var(--fall-delay) linear infinite,
-			tail-fade var(--tail-fade-duration) var(--fall-delay) ease-out infinite;
-
-		@include sp-layout {
-			// For mobile performance, tail-fade animation will be removed QAQ
-			animation: fall var(--fall-duration) var(--fall-delay) linear infinite;
-		}
-
-		@for $i from 1 through $star-count {
-			&:nth-child(#{$i}) {
-				--star-tail-length: #{calc(random_range(500em, 750em) / 100)};
-				--top-offset: #{calc(random_range(0vh, 10000vh) / 100)};
-				--fall-duration: #{calc(random_range(6000, 12000s) / 1000)};
-				--fall-delay: #{calc(random_range(0, 10000s) / 1000)};
-			}
-		}
-
-		&::before,
-		&::after {
-			position: absolute;
-			content: '';
-			top: 0;
-			left: calc(var(--star-width) / -2);
-			width: var(--star-width);
-			height: 100%;
-			background: linear-gradient(45deg, transparent, currentColor, transparent);
-			border-radius: inherit;
-			animation: blink 2s linear infinite;
-		}
-
-		&::before {
-			transform: rotate(45deg);
-		}
-
-		&::after {
-			transform: rotate(-45deg);
-		}
+		width: 100%;
+		height: 100px;
+		background: url('./assets/wave.png');
+		background-size: 1000px 100px;
 	}
-
-	@keyframes fall {
-		to {
-			transform: translate3d(-30em, 0, 0);
-		}
+	section .air.air1 {
+		animation: wave 30s linear infinite;
+		z-index: 1000;
+		opacity: 1;
+		animation-delay: 0s;
+		bottom: 0;
 	}
-
-	@keyframes tail-fade {
-		0%,
-		50% {
-			width: var(--star-tail-length);
-			opacity: 1;
+	section .air.air2 {
+		animation: wave2 15s linear infinite;
+		z-index: 999;
+		opacity: 0.5;
+		animation-delay: -5s;
+		bottom: 10px;
+	}
+	section .air.air3 {
+		animation: wave 30s linear infinite;
+		z-index: 998;
+		opacity: 0.2;
+		animation-delay: -2s;
+		bottom: 15px;
+	}
+	section .air.air4 {
+		animation: wave2 5s linear infinite;
+		z-index: 997;
+		opacity: 0.7;
+		animation-delay: -5s;
+		bottom: 20px;
+	}
+	@keyframes wave {
+		0% {
+			background-position-x: 0px;
 		}
-
-		70%,
-		80% {
-			width: 0;
-			opacity: 0.4;
-		}
-
 		100% {
-			width: 0;
-			opacity: 0;
+			background-position-x: 1000px;
 		}
 	}
-
-	@keyframes blink {
-		50% {
-			opacity: 0.6;
+	@keyframes wave2 {
+		0% {
+			background-position-x: 0px;
+		}
+		100% {
+			background-position-x: -1000px;
 		}
 	}
-	
 </style>
