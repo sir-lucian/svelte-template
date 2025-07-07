@@ -21,7 +21,7 @@
 	</div>
     <div class="text-input-box-container">
         <input
-		class="text-input-box w-full border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-1 focus:ring-sky-500 {disabled ? 'bg-gray-100 text-gray-400' : 'text-black bg-white'}"
+		class="text-input-box w-full border border-gray-400 rounded-md px-2 py-1 focus:outline-none focus:ring-1 focus:ring-sky-500 {disabled ? 'bg-gray-100 text-gray-400' : 'text-black bg-white'}"
 		{placeholder}
 		id={targetableId}
         bind:this={inputElement}

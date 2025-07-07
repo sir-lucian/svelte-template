@@ -22,7 +22,7 @@
     .login-box-container {
         min-width: 1/3;
         max-width: 600px; /* Limit the width of the login box */
-        background-color: rgba(255,255,255, 0.75); /* White background for the login box */
+        background-color: white; /* White background for the login box */
         border-radius: 1.25rem;
         box-shadow: 2 2px 5px rgba(0, 0, 0, 0.25); /* Subtle shadow for depth */
     }

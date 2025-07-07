@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
     import 'bootstrap-icons/font/bootstrap-icons.css';
-	import TextInput from '../common/textInput.svelte';
+	import TextInput from '../common/TextInput.svelte';
 
 	let username: string = '';
 	let password: string = '';
@@ -44,10 +43,6 @@
             console.log('Please fill in all required fields');
         }
 	}
-
-	onMount(() => {
-		// Any initialization logic can go here
-	});
 
 </script>
 
