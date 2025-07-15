@@ -6,6 +6,6 @@
 </script>
 
 <div class="header-form w-full text-{textAlign}">
-    <div class="text-2xl font-bold"><i class="bi bi-chevron-right me-2 text-sky-400"></i>{title}</div>
+    <div class="text-2xl font-bold"><i class="bi bi-chevron-right me-1 text-sky-400"></i>{title}</div>
     <div class="{subtitle ? '' : 'hidden'} text-lg font-semibold text-gray-500">{subtitle}</div>
 </div>

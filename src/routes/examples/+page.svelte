@@ -5,7 +5,7 @@
 
 <BackgroundGradient />
 <div class="flex flex-col items-center justify-center gap-5 mt-5">
-	<div class="container max-w-6xl">
+	<div class="container max-w-6xl px-4">
 		<InputExamples />
 	</div>
 </div>

@@ -1,0 +1,1 @@
+export const REQUIRED_STAR = '<span class="text-red-500">*</span>';

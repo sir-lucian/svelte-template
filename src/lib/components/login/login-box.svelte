@@ -1,23 +1,25 @@
 <script lang="ts">
     import 'bootstrap-icons/font/bootstrap-icons.css';
 	import TextInput from '../common/TextInput.svelte';
-
+	
+	export let showLoginBox: boolean = false;
 	let username: string = '';
 	let password: string = '';
     let disabled: boolean = false;
+	let errorMessage: string = '';
 
-    let usernameInput: any;
-    let passwordInput: any;
+	let userInput: any;
+	let passwordInput: any;
     let loginButton: any;
 
     async function validateComponent(): Promise<boolean> {
         if (!username) {
-            usernameInput.focus();
+            document.getElementById('username')?.focus();
+			userInput.validateInput();
             return false;
         }
-
         if (!password) {
-            passwordInput.focus();
+            document.getElementById('password')?.focus();
             return false;
         }
 
@@ -40,29 +42,26 @@
 			console.log('Login successful');
 		}
         else {
-            console.log('Please fill in all required fields');
+            errorMessage = 'กรุณากรอกข้อมูลให้ครบถ้วน';
         }
 	}
 
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
-<div class="login-box p-5" on:keypress={(event) => {
+<div class="login-box {showLoginBox ? 'flex' : 'hidden'} p-5" on:keypress={(event) => {
         if (event.key === 'Enter') {
             doLogin(event);
         }
     }}>
-	<div class="login-header">
-		<h1 class="text-center text-xl font-bold">เข้าสู่ระบบ</h1>
-	</div>
 	<div class="login-form">
 		<div class="form-group">
 			<TextInput
                 id="username"
                 labelText="ชื่อผู้ใช้"
                 bind:value={username}
+				bind:this={userInput}
                 disabled={disabled}
-                bind:inputElement={usernameInput}
             />
 		</div>
 		<div class="form-group">
@@ -70,11 +69,12 @@
                 id="password"
                 labelText="รหัสผ่าน"
                 bind:value={password}
+				bind:this={passwordInput}
                 type="password"
-                bind:inputElement={passwordInput}
                 disabled={disabled}
             />
 		</div>
+		<p class="text-red-500 text-center">{errorMessage}</p>
 	</div>
 	<div class="form-actions">
 		<button
@@ -95,7 +95,6 @@
     }
 
 	div.login-box {
-		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;

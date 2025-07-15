@@ -8,7 +8,7 @@
     ];
 </script>
 
-<div class="fixed w-full bg-white shadow-md py-4 z-10">
+<div class="fixed w-full bg-white shadow-md px-5 py-4 z-10">
     <div class="container max-w-6xl mx-auto flex items-center justify-between">
         <a href="/" class="text-lg font-semibold text-gray-800">
             Svelte Template
@@ -25,7 +25,7 @@
     </div>
 </div>
 
-<div class="opacity-0 w-full bg-white shadow-md py-4 pointer-events-none">
+<div class="opacity-0 w-full bg-white shadow-md px-5 py-4 pointer-events-none">
     <div class="container max-w-6xl mx-auto flex items-center justify-between">
         <div class="text-lg font-semibold text-gray-800">
             Svelte Template

@@ -1,5 +1,5 @@
 <script>
-	import PageLogin from "$lib/features/login/page-login.svelte";
+	import PageLogin from "$lib/features/login/pages/page-login.svelte";
 
 </script>
 <PageLogin />
